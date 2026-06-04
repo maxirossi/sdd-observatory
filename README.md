@@ -23,8 +23,11 @@ Observabilidad local del proceso agéntico de un proyecto SDD: agents declarados
 ## Quick start
 
 ```bash
+# 0. (opcional) Clonar el fixture de ejemplo para probar end-to-end
+git clone https://github.com/maxirossi/sdd-template-lab.git
+
 # 1. Configurar
-cp .env.example .env       # editar SCAN_TARGET_PATH si hace falta
+cp .env.example .env       # apuntá SCAN_TARGET_PATH al fixture (o a tu propio repo SDD)
 
 # 2. Levantar stack
 docker compose up -d
@@ -37,6 +40,8 @@ open http://localhost:5180
 ```
 
 Eso es todo. Los logs de Claude/Copilot se procesan automáticamente cada 60s por el watch loop.
+
+> **Fixture de demo:** [`sdd-template-lab`](https://github.com/maxirossi/sdd-template-lab) es un repo SDD sintético (CRUD de notas + gobernanza + agentes declarados) pensado para probar el Observatory sin datos reales. También podés apuntar `SCAN_TARGET_PATH` a cualquier repo SDD propio.
 
 ---
 
