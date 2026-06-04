@@ -1,0 +1,236 @@
+@import 'tailwindcss';
+
+@theme {
+  --font-sans: 'Inter', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+    'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', ui-monospace, SFMono-Regular, Menlo,
+    Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
+}
+
+html,
+body {
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11', 'ss01';
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  background: #05070d;
+  color: #e2e8f0;
+  font-size: 13.5px;
+  line-height: 1.55;
+  letter-spacing: -0.005em;
+}
+
+/* ─────────────────── Scrollbars custom ─────────────────── */
+*::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+*::-webkit-scrollbar-thumb {
+  background: rgba(148, 163, 184, 0.14);
+  border-radius: 8px;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+*::-webkit-scrollbar-thumb:hover {
+  background: rgba(148, 163, 184, 0.28);
+  background-clip: padding-box;
+}
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(148, 163, 184, 0.18) transparent;
+}
+
+/* ─────────────────── Utility classes ─────────────────── */
+
+/* Cards con profundidad — usar en lugar de bg-slate-900 plano. */
+.card-elev {
+  background: linear-gradient(180deg, rgba(18, 24, 45, 0.95), rgba(10, 14, 28, 0.98));
+  border: 1px solid rgba(120, 160, 255, 0.08);
+  box-shadow:
+    0 1px 0 0 rgba(255, 255, 255, 0.02) inset,
+    0 8px 30px rgba(0, 0, 0, 0.35);
+  border-radius: 12px;
+}
+
+.card-elev-hover {
+  transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
+}
+.card-elev-hover:hover {
+  transform: translateY(-1px);
+  border-color: rgba(120, 160, 255, 0.18);
+  box-shadow:
+    0 1px 0 0 rgba(255, 255, 255, 0.04) inset,
+    0 14px 40px rgba(0, 0, 0, 0.45);
+}
+
+/* KPIs grandes — letter-spacing tight, tabular nums. */
+.kpi-number {
+  font-size: 2.25rem;
+  line-height: 1.05;
+  letter-spacing: -0.035em;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+.kpi-number-lg {
+  font-size: 2.75rem;
+  line-height: 1;
+  letter-spacing: -0.04em;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Labels uppercase con tracking — para column headers / section labels. */
+.label-track {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* Mono body — para timestamps, ids, paths. */
+.mono-body {
+  font-family: var(--font-mono);
+  font-size: 12.5px;
+  letter-spacing: 0;
+  font-feature-settings: 'liga' 0;
+}
+
+/* Status pulse — live indicator */
+.pulse-dot {
+  position: relative;
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+.pulse-dot::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: inherit;
+  animation: pulse-ring 1.8s ease-out infinite;
+  opacity: 0.6;
+}
+@keyframes pulse-ring {
+  0% {
+    transform: scale(1);
+    opacity: 0.55;
+  }
+  80%,
+  100% {
+    transform: scale(2.4);
+    opacity: 0;
+  }
+}
+
+/* Fade-in para event rows entrantes. */
+.fade-in-row {
+  animation: fade-in 240ms ease-out;
+}
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(2px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Number tabular — apply en cualquier cell numérica. */
+.tabular {
+  font-variant-numeric: tabular-nums;
+}
+
+/* ─────────────────── Glow system (sutil, no neon) ─────────────────── */
+.glow-cyan {
+  box-shadow:
+    0 0 0 1px rgba(103, 232, 249, 0.08),
+    0 0 24px rgba(34, 211, 238, 0.06);
+}
+.glow-emerald {
+  box-shadow:
+    0 0 0 1px rgba(52, 211, 153, 0.1),
+    0 0 24px rgba(52, 211, 153, 0.07);
+}
+.glow-amber {
+  box-shadow:
+    0 0 0 1px rgba(251, 191, 36, 0.1),
+    0 0 22px rgba(251, 191, 36, 0.06);
+}
+.glow-rose {
+  box-shadow:
+    0 0 0 1px rgba(244, 114, 114, 0.12),
+    0 0 22px rgba(244, 114, 114, 0.07);
+}
+
+/* Hero card — depth + radial highlight muy suave */
+.hero-card {
+  position: relative;
+  background:
+    radial-gradient(120% 140% at 0% 0%, rgba(34, 211, 238, 0.05), transparent 55%),
+    linear-gradient(180deg, rgba(18, 24, 45, 0.96), rgba(8, 12, 24, 0.98));
+  border: 1px solid rgba(120, 160, 255, 0.1);
+  box-shadow:
+    0 1px 0 0 rgba(255, 255, 255, 0.03) inset,
+    0 10px 40px rgba(0, 0, 0, 0.45);
+  border-radius: 14px;
+}
+
+/* ─────────────────── Motion: entrance stagger ─────────────────── */
+.fade-up {
+  opacity: 0;
+  animation: fade-up 420ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+/* Stagger delays — aplicar .stagger-N a hijos */
+.stagger-0 { animation-delay: 0ms; }
+.stagger-1 { animation-delay: 60ms; }
+.stagger-2 { animation-delay: 120ms; }
+.stagger-3 { animation-delay: 180ms; }
+.stagger-4 { animation-delay: 240ms; }
+.stagger-5 { animation-delay: 300ms; }
+
+/* Glass tooltip para charts */
+.glass-tooltip {
+  background: rgba(10, 14, 28, 0.82);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(120, 160, 255, 0.14);
+  border-radius: 10px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
+}
+
+/* Progress fill animado */
+.progress-fill {
+  transition: width 700ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Búsqueda en el visor de archivos (CSS Custom Highlight API, estilo VS Code) */
+::highlight(file-search) {
+  background-color: rgba(250, 204, 21, 0.32);
+  color: inherit;
+}
+::highlight(file-search-active) {
+  background-color: #f59e0b;
+  color: #0b1220;
+}

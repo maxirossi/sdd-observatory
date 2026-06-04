@@ -1,0 +1,91 @@
+# OS
+.DS_Store
+Thumbs.db
+
+# Env
+.env
+.env.local
+.env.*.local
+
+# Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+env/
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.coverage
+htmlcov/
+*.egg-info/
+build/
+dist/
+.tox/
+
+# Node
+node_modules/
+.pnpm-store/
+.parcel-cache/
+.cache/
+dist/
+.eslintcache
+*.tsbuildinfo
+
+# Vite
+frontend/dist/
+
+# Logs
+*.log
+logs/
+
+# Docker
+.docker/
+
+# Alembic local sqlite (si se usa)
+backend/test.db
+
+# Coverage
+coverage/
+.nyc_output/
+
+# Local scans (output of CLI on dev machine)
+scans/
+
+# Certs / keys — nunca commitear
+*.pem
+!*.example.pem
+
+# Frontend build artifacts
+frontend/.vite/
+frontend/tsconfig.tsbuildinfo
+frontend/.tsbuildinfo
+frontend/coverage/
+
+# Backend runtime artifacts
+backend/.coverage
+backend/coverage.xml
+backend/htmlcov/
+backend/*.db
+backend/*.db-journal
+backend/dump.rdb
+
+# Postgres data dir si alguien usa bind mount accidentalmente
+postgres_data/
+pgdata/
+
+# Macros / scratch
+*.bak
+*.orig
+.DS_Store
+
+# Claude / Cursor caches accidentales
+.claude/
+.cursor/
